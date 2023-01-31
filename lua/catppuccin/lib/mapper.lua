@@ -48,7 +48,8 @@ function M.apply(flavour)
 		sky = 39,
 		sapphire = 81,
 		blue = 4,
-		lavender = 62,
+		lavender = 147,
+
 		text = 7,
 		subtext1 = 250,
 		subtext0 = 15,
@@ -58,6 +59,7 @@ function M.apply(flavour)
 		surface2 = 239,
 		surface1 = 238,
 		surface0 = 237,
+
 		base = 0,
 		mantle = 233,
 		crust = 232,
