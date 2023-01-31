@@ -2,13 +2,13 @@ local M = {}
 
 function M.get()
 	return {
-		WhichKey = { fg = C.flamingo },
-		WhichKeyGroup = { fg = C.blue },
-		WhichKeySeperator = { fg = C.overlay0 },
-		WhichKeyDesc = { fg = C.pink },
+		WhichKey = { fg = C.flamingo, ctermfg = T.flamingo },
+		WhichKeyGroup = { fg = C.blue, ctermfg = T.blue },
+		WhichKeySeperator = { fg = C.overlay0, ctermfg = T.overlay0 },
+		WhichKeyDesc = { fg = C.pink, ctermfg = T.pink },
 		WhichKeyFloat = { bg = O.transparent_background and C.none or C.crust },
-		WhichKeyBorder = { fg = C.blue },
-		WhichKeyValue = { fg = C.overlay0 },
+		WhichKeyBorder = { fg = C.blue, ctermfg = T.blue },
+		WhichKeyValue = { fg = C.overlay0, ctermfg = T.overlay0 },
 	}
 end
 

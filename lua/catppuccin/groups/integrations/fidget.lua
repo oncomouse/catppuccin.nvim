@@ -4,9 +4,9 @@ function M.get()
 	return {
 		FidgetTask = {
 			bg = O.transparent_background and C.none or C.mantle,
-			fg = C.text,
+			fg = C.text, ctermfg = T.text,
 		},
-		FidgetTitle = { fg = C.blue },
+		FidgetTitle = { fg = C.blue, ctermfg = T.blue },
 	}
 end
 

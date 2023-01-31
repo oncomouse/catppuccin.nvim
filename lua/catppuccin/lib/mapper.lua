@@ -34,6 +34,34 @@ function M.apply(flavour)
 	_G.O = require("catppuccin").options
 	_G.C = require("catppuccin.palettes").get_palette(flavour)
 	_G.U = require "catppuccin.utils.colors"
+	_G.T = { -- cterm mappings
+		rosewater = 230,
+		flamingo = 224,
+		pink = 5,
+		mauve = 131,
+		red = 1,
+		maroon = 217,
+		peach = 216,
+		yellow = 3,
+		green = 2,
+		teal = 6,
+		sky = 39,
+		sapphire = 81,
+		blue = 4,
+		lavender = 1,
+		text = 15,
+		subtext1 = 250,
+		subtext0 = 246,
+		overlay2 = 243,
+		overlay1 = 241,
+		overlay0 = 240,
+		surface2 = 239,
+		surface1 = 238,
+		surface0 = 237,
+		base = 0,
+		mantle = 233,
+		crust = 232,
+	}
 
 	C.none = "NONE"
 

@@ -14,24 +14,24 @@ function M.get()
 		MasonHeader = { fg = fg, bg = bg, style = { "bold" } },
 		MasonHeaderSecondary = { fg = secondary_fg, bg = secondary_bg, style = { "bold" } },
 
-		MasonHighlight = { fg = C.green },
+		MasonHighlight = { fg = C.green, ctermfg = T.green },
 		MasonHighlightBlock = {
 			bg = O.transparent_background and C.none or C.green,
 			fg = O.transparent_background and C.green or C.base,
 		},
 		MasonHighlightBlockBold = { bg = secondary_bg, fg = secondary_fg, bold = true },
 
-		MasonHighlightSecondary = { fg = C.mauve },
+		MasonHighlightSecondary = { fg = C.mauve, ctermfg = T.mauve },
 		MasonHighlightBlockSecondary = { fg = secondary_fg, bg = secondary_bg },
 		MasonHighlightBlockBoldSecondary = { fg = fg, bg = bg, bold = true },
 
-		MasonMuted = { fg = C.overlay0 },
+		MasonMuted = { fg = C.overlay0, ctermfg = T.overlay0 },
 		MasonMutedBlock = { bg = muted_bg, fg = muted_fg },
-		MasonMutedBlockBold = { bg = C.yellow, fg = C.base, bold = true },
+		MasonMutedBlockBold = { bg = C.yellow, ctermbg = T.yellow, fg = C.base, ctermfg = T.base, bold = true },
 
-		MasonError = { fg = C.red },
+		MasonError = { fg = C.red, ctermfg = T.red },
 
-		MasonHeading = { fg = C.lavender, bold = true },
+		MasonHeading = { fg = C.lavender, ctermfg = T.lavender, bold = true },
 	}
 end
 

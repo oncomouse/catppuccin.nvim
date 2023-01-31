@@ -14,9 +14,9 @@ function M.get()
 		-- These groups are for the native LSP clienC. Some other LSP clients may
 		-- use these groups, or use their own. Consult your LSP client's
 		-- documentation.
-		LspReferenceText = { bg = C.surface1 }, -- used for highlighting "text" references
-		LspReferenceRead = { bg = C.surface1 }, -- used for highlighting "read" references
-		LspReferenceWrite = { bg = C.surface1 }, -- used for highlighting "write" references
+		LspReferenceText = { bg = C.surface1, ctermbg = T.surface1 }, -- used for highlighting "text" references
+		LspReferenceRead = { bg = C.surface1, ctermbg = T.surface1 }, -- used for highlighting "read" references
+		LspReferenceWrite = { bg = C.surface1, ctermbg = T.surface1 }, -- used for highlighting "write" references
 		-- hightlight diagnostics in numberline
 
 		DiagnosticVirtualTextError = {
@@ -40,10 +40,10 @@ function M.get()
 			style = virtual_text.hints,
 		}, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
 
-		DiagnosticError = { bg = C.none, fg = error, style = virtual_text.errors }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
-		DiagnosticWarn = { bg = C.none, fg = warning, style = virtual_text.warnings }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
-		DiagnosticInfo = { bg = C.none, fg = info, style = virtual_text.information }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
-		DiagnosticHint = { bg = C.none, fg = hint, style = virtual_text.hints }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
+		DiagnosticError = { bg = C.none, ctermbg = T.none, fg = error, style = virtual_text.errors }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
+		DiagnosticWarn = { bg = C.none, ctermbg = T.none, fg = warning, style = virtual_text.warnings }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
+		DiagnosticInfo = { bg = C.none, ctermbg = T.none, fg = info, style = virtual_text.information }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
+		DiagnosticHint = { bg = C.none, ctermbg = T.none, fg = hint, style = virtual_text.hints }, -- Used as the mantle highlight group. Other Diagnostic highlights link to this by default
 
 		-- for nvim nightly
 		DiagnosticUnderlineError = { style = underlines.errors, sp = error }, -- Used to underline "Error" diagnostics
@@ -65,7 +65,7 @@ function M.get()
 		LspDiagnosticsDefaultWarning = { fg = warning }, -- Used as the mantle highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		LspDiagnosticsDefaultInformation = { fg = info }, -- Used as the mantle highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		LspDiagnosticsDefaultHint = { fg = hint }, -- Used as the mantle highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-		LspSignatureActiveParameter = { fg = C.peach },
+		LspSignatureActiveParameter = { fg = C.peach, ctermfg = T.peach },
 		-- LspDiagnosticsFloatingError         = { }, -- Used to color "Error" diagnostic messages in diagnostics float
 		-- LspDiagnosticsFloatingWarning       = { }, -- Used to color "Warning" diagnostic messages in diagnostics float
 		-- LspDiagnosticsFloatingInformation   = { }, -- Used to color "Information" diagnostic messages in diagnostics float
@@ -83,8 +83,8 @@ function M.get()
 		LspDiagnosticsUnderlineWarning = { style = underlines.warnings, sp = warning }, -- Used to underline "Warning" diagnostics
 		LspDiagnosticsUnderlineInformation = { style = underlines.information, sp = info }, -- Used to underline "Information" diagnostics
 		LspDiagnosticsUnderlineHint = { style = underlines.hints, sp = hint }, -- Used to underline "Hint" diagnostics
-		LspCodeLens = { fg = C.overlay0 }, -- virtual text of the codelens
-		LspInfoBorder = { fg = C.blue }, -- LspInfo border
+		LspCodeLens = { fg = C.overlay0, ctermfg = T.overlay0 }, -- virtual text of the codelens
+		LspInfoBorder = { fg = C.blue, ctermfg = T.blue }, -- LspInfo border
 	}
 end
 
