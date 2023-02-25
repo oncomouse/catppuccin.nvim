@@ -6,3 +6,5 @@ name = "vim"
 any = true
 [jit]
 any = true
+[package.config.sub]
+any = true
