@@ -6,7 +6,9 @@ function M.get()
 		TelescopeSelectionCaret = { fg = C.flamingo, ctermfg = T.flamingo },
 		TelescopeSelection = {
 			fg = O.transparent_background and C.flamingo or C.text,
+			ctermfg = O.transparent_background and T.flamingo or T.text,
 			bg = O.transparent_background and C.none or C.surface0,
+			ctermbg = O.transparent_background and T.none or T.surface0,
 			style = { "bold" },
 		},
 		TelescopeMatching = { fg = C.blue, ctermfg = T.blue },

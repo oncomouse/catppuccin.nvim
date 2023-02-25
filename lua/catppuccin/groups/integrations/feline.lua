@@ -323,7 +323,8 @@ function M.get()
 		end,
 		enabled = is_enabled(80),
 		hl = {
-			fg = C.rosewater, ctermfg = T.rosewater,
+			fg = C.rosewater,
+			ctermfg = T.rosewater,
 			bg = sett.bkg,
 		},
 	}
@@ -334,7 +335,8 @@ function M.get()
 		enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR) end,
 
 		hl = {
-			fg = C.red, ctermfg = T.red,
+			fg = C.red,
+			ctermfg = T.red,
 			bg = sett.bkg,
 		},
 		icon = " " .. assets.lsp.error .. " ",
@@ -344,7 +346,8 @@ function M.get()
 		provider = "diagnostic_warnings",
 		enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.WARN) end,
 		hl = {
-			fg = C.yellow, ctermfg = T.yellow,
+			fg = C.yellow,
+			ctermfg = T.yellow,
 			bg = sett.bkg,
 		},
 		icon = " " .. assets.lsp.warning .. " ",
@@ -354,7 +357,8 @@ function M.get()
 		provider = "diagnostic_info",
 		enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.INFO) end,
 		hl = {
-			fg = C.sky, ctermfg = T.sky,
+			fg = C.sky,
+			ctermfg = T.sky,
 			bg = sett.bkg,
 		},
 		icon = " " .. assets.lsp.info .. " ",
@@ -364,7 +368,8 @@ function M.get()
 		provider = "diagnostic_hints",
 		enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.HINT) end,
 		hl = {
-			fg = C.rosewater, ctermfg = T.rosewater,
+			fg = C.rosewater,
+			ctermfg = T.rosewater,
 			bg = sett.bkg,
 		},
 		icon = " " .. assets.lsp.hint .. " ",
@@ -447,8 +452,10 @@ function M.get()
 	components.inactive[1][1] = {
 		provider = function() return " " .. string.upper(vim.bo.ft) .. " " end,
 		hl = {
-			fg = C.overlay2, ctermfg = T.overlay2,
-			bg = C.mantle, ctermbg = T.mantle,
+			fg = C.overlay2,
+			ctermfg = T.overlay2,
+			bg = C.mantle,
+			ctermbg = T.mantle,
 		},
 	}
 

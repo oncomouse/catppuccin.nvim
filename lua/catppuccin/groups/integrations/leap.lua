@@ -17,7 +17,10 @@ function M.get()
 			bg = O.transparent_background and C.none or U.vary_color({ latte = U.brighten(C.sky, 0.3) }, C.sky),
 			style = { "nocombine", O.transparent_background and "bold" or nil },
 		},
-		LeapBackdrop = { fg = O.transparent_background and C.overlay0 or C.none },
+		LeapBackdrop = {
+			fg = O.transparent_background and C.overlay0 or C.none,
+			ctermfg = O.transparent_background and T.overlay0 or T.none,
+		},
 	}
 end
 

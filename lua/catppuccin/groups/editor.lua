@@ -15,8 +15,16 @@ function M.get()
 		Directory = { fg = C.blue, ctermfg = T.blue }, -- directory names (and other special names in listings)
 		EndOfBuffer = { fg = O.show_end_of_buffer and C.surface1 or C.base }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
 		ErrorMsg = { fg = C.red, ctermfg = T.red, style = { "bold", "italic" } }, -- error messages on the command line
-		VertSplit = { fg = O.transparent_background and C.surface1 or C.crust }, -- the column separating vertically split windows
-		Folded = { fg = C.blue, ctermfg = T.blue, bg = O.transparent_background and C.none or C.surface1 }, -- line used for closed folds
+		VertSplit = {
+			fg = O.transparent_background and C.surface1 or C.crust,
+			ctermfg = O.transparent_background and T.surface1 or T.crust,
+		}, -- the column separating vertically split windows
+		Folded = {
+			fg = C.blue,
+			ctermfg = T.blue,
+			bg = O.transparent_background and C.none or C.surface1,
+			ctermbg = O.transparent_background and T.none or T.surface1,
+		}, -- line used for closed folds
 		FoldColumn = { fg = C.overlay0, ctermfg = T.overlay0 }, -- 'foldcolumn'
 		SignColumn = { fg = C.surface1, ctermfg = T.surface1 }, -- column where |signs| are displayed
 		SignColumnSB = { bg = C.crust, ctermbg = T.crust, fg = C.surface1, ctermfg = T.surface1 }, -- column where |signs| are displayed
@@ -29,7 +37,12 @@ function M.get()
 		MsgSeparator = {}, -- Separator for scrolled messages, `msgsep` flag of 'display'
 		MoreMsg = { fg = C.blue, ctermfg = T.blue }, -- |more-prompt|
 		NonText = { fg = C.overlay0, ctermfg = T.overlay0 }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		Normal = { fg = C.text, ctermfg = T.text, bg = O.transparent_background and C.none or C.base }, -- normal text
+		Normal = {
+			fg = C.text,
+			ctermfg = T.text,
+			bg = O.transparent_background and C.none or C.base,
+			ctermbg = O.transparent_background and T.none or T.base,
+		}, -- normal text
 		NormalNC = {
 			fg = C.text,
 			ctermfg = T.text,
@@ -64,8 +77,18 @@ function M.get()
 		SpellCap = { sp = C.yellow, style = { "undercurl" } }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		SpellLocal = { sp = C.blue, style = { "undercurl" } }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		SpellRare = { sp = C.green, style = { "undercurl" } }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
-		StatusLine = { fg = C.text, ctermfg = T.text, bg = O.transparent_background and C.none or C.mantle }, -- status line of current window
-		StatusLineNC = { fg = C.surface1, ctermfg = T.surface1, bg = O.transparent_background and C.none or C.mantle }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+		StatusLine = {
+			fg = C.text,
+			ctermfg = T.text,
+			bg = O.transparent_background and C.none or C.mantle,
+			ctermbg = O.transparent_background and T.none or T.mantle,
+		}, -- status line of current window
+		StatusLineNC = {
+			fg = C.surface1,
+			ctermfg = T.surface1,
+			bg = O.transparent_background and C.none or C.mantle,
+			ctermbg = O.transparent_background and T.none or T.mantle,
+		}, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		TabLine = { bg = C.mantle, ctermbg = T.mantle, fg = C.surface1, ctermfg = T.surface1 }, -- tab pages line, not active tab page label
 		TabLineFill = { bg = C.black, ctermbg = T.black }, -- tab pages line, where there are no labels
 		TabLineSel = { fg = C.green, ctermfg = T.green, bg = C.surface1, ctermbg = T.surface1 }, -- tab pages line, active tab page label
