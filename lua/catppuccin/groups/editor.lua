@@ -21,7 +21,7 @@ function M.get()
 		SignColumn = { fg = C.surface1, ctermfg = T.surface1 }, -- column where |signs| are displayed
 		SignColumnSB = { bg = C.crust, ctermbg = T.crust, fg = C.surface1, ctermfg = T.surface1 }, -- column where |signs| are displayed
 		Substitute = { bg = C.surface1, ctermbg = T.surface1, fg = U.vary_color({ latte = C.red }, C.pink) }, -- |:substitute| replacement text highlighting
-		LineNr = { fg = C.surface1, ctermfg = C.surface1 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is seC.
+		LineNr = { fg = C.surface1, ctermfg = T.surface1 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is seC.
 		CursorLineNr = { fg = C.lavender, ctermfg = T.lavender }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line. highlights the number in numberline.
 		MatchParen = { fg = C.peach, ctermfg = T.peach, style = { "bold" } }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 		ModeMsg = { fg = C.text, ctermfg = T.text, style = { "bold" } }, -- 'showmode' message (e.g., "-- INSERT -- ")
@@ -31,18 +31,25 @@ function M.get()
 		NonText = { fg = C.overlay0, ctermfg = T.overlay0 }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 		Normal = { fg = C.text, ctermfg = T.text, bg = O.transparent_background and C.none or C.base }, -- normal text
 		NormalNC = {
-			fg = C.text, ctermfg = T.text,
+			fg = C.text,
+			ctermfg = T.text,
 			bg = (O.transparent_background and O.dim_inactive.enabled and C.dim)
 				or (O.dim_inactive.enabled and C.dim)
 				or (O.transparent_background and C.none)
 				or C.base,
 		}, -- normal text in non-current windows
 		NormalSB = { fg = C.text, ctermfg = T.text, bg = C.crust, ctermbg = T.crust }, -- normal text in non-current windows
-		NormalFloat = { fg = C.text, bg = (O.transparent_background and vim.o.winblend == 0) and C.none or C.mantle }, -- Normal text in floating windows.
+		NormalFloat = {
+			fg = C.text,
+			ctermfg = T.text,
+			bg = (O.transparent_background and vim.o.winblend == 0) and C.none or C.mantle,
+			ctermbg = T.mantle,
+		}, -- Normal text in floating windows.
 		FloatBorder = { fg = C.blue, ctermfg = T.blue },
 		Pmenu = {
 			bg = (O.transparent_background and vim.o.pumblend == 0) and C.none or U.darken(C.surface0, 0.8, C.crust),
-			fg = C.overlay2, ctermfg = T.overlay2
+			fg = C.overlay2,
+			ctermfg = T.overlay2,
 		}, -- Popup menu: normal item.
 		PmenuSel = { fg = C.text, ctermfg = T.text, bg = C.surface1, ctermbg = T.surface1, style = { "bold" } }, -- Popup menu: selected item.
 		PmenuSbar = { bg = C.surface1, ctermbg = T.surface1 }, -- Popup menu: scrollbar.
