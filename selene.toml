@@ -1,0 +1,5 @@
+std="vim+catppuccin"
+
+[lints]
+global_usage = "allow"
+multiple_statements = "allow"

@@ -1,0 +1,16 @@
+[selene]
+base = "lua51"
+name = "catppuccin"
+
+[C]
+any = true
+[T]
+any = true
+[U]
+any = true
+[O]
+any = true
+[bit]
+any = true
+[bit32]
+any = true
