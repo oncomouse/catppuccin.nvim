@@ -63,6 +63,7 @@ function M.apply(flavour)
 		base = 0,
 		mantle = 233,
 		crust = 232,
+		none = "NONE",
 	}
 
 	C.none = "NONE"
