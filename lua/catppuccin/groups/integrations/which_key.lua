@@ -6,7 +6,6 @@ function M.get()
 		WhichKeyGroup = { fg = C.blue, ctermfg = T.blue },
 		WhichKeySeperator = { fg = C.overlay0, ctermfg = T.overlay0 },
 		WhichKeyDesc = { fg = C.pink, ctermfg = T.pink },
-		WhichKeyFloat = { bg = O.transparent_background and C.none or C.crust },
 		WhichKeyBorder = { fg = C.blue, ctermfg = T.blue },
 		WhichKeyValue = { fg = C.overlay0, ctermfg = T.overlay0 },
 	}

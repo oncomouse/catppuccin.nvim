@@ -41,6 +41,7 @@ local M = {
 			telescope = true,
 			treesitter = not is_vim,
 			ts_rainbow = true,
+			ts_rainbow2 = true,
 			barbecue = {
 				dim_dirname = true,
 			},
@@ -72,12 +73,12 @@ local M = {
 }
 
 function M.compile()
-	local _flavour = M.flavour
+	local user_flavour = M.flavour
 	for flavour, _ in pairs(M.flavours) do
 		M.flavour = flavour
 		require("catppuccin.lib." .. (is_vim and "vim." or "") .. "compiler").compile(flavour)
 	end
-	M.flavour = _flavour -- Restore user flavour after compile
+	M.flavour = user_flavour -- Restore user flavour after compile
 end
 
 local function get_flavour(default)
@@ -85,7 +86,7 @@ local function get_flavour(default)
 	if default then
 		flavour = default
 	elseif vim.g.colors_name == "catppuccin" then -- after first time load
-		flavour = M.options.background[is_vim and vim.eval "&background" or vim.o.background]
+		flavour = M.options.background[vim.o.background]
 	else
 		flavour = M.flavour -- first time load
 	end
@@ -100,7 +101,7 @@ local function get_flavour(default)
 		)
 		flavour = nil
 	end
-	return flavour or "mocha"
+	return flavour or M.options.background[vim.o.background]
 end
 
 local lock = false -- Avoid g:colors_name reloading
@@ -108,7 +109,7 @@ local lock = false -- Avoid g:colors_name reloading
 function M.load(flavour)
 	if lock then return end
 	M.flavour = get_flavour(flavour)
-	local compiled_path = M.options.compile_path .. M.path_sep .. M.flavour .. "_compiled.lua"
+	local compiled_path = M.options.compile_path .. M.path_sep .. M.flavour
 	lock = true
 	local f = loadfile(compiled_path)
 	if not f then
@@ -127,9 +128,8 @@ function M.setup(user_conf)
 	M.options.highlight_overrides.all = user_conf.custom_highlights or M.options.highlight_overrides.all
 	M.flavour = get_flavour(M.options.flavour or vim.g.catppuccin_flavour)
 
-	-- Caching configuration
-	local cached_path = M.options.compile_path .. M.path_sep .. "date.txt"
-
+	-- Get cached hash
+	local cached_path = M.options.compile_path .. M.path_sep .. "cached"
 	local file = io.open(cached_path)
 	local cached = nil
 	if file then
@@ -137,10 +137,15 @@ function M.setup(user_conf)
 		file:close()
 	end
 
+	-- Get current hash
 	local git_path = debug.getinfo(1).source:sub(2, -24) .. ".git" .. M.path_sep .. "ORIG_HEAD"
 	local git = vim.fn.getftime(git_path) -- 2x faster vim.loop.fs_stat
-	local hash = require("catppuccin.lib.hashing").hash(user_conf) .. (git == -1 and git_path or git) -- no .git in /nix/store -> cache path
+	local hash = require("catppuccin.lib.hashing").hash(user_conf)
+		.. (git == -1 and git_path or git) -- no .git in /nix/store -> cache path
+		.. (vim.o.winblend == 0 and 1 or 0) -- :h winblend
+		.. (vim.o.pumblend == 0 and 1 or 0) -- :h pumblend
 
+	-- Recompile if hash changed
 	if cached ~= hash then
 		M.compile()
 		file = io.open(cached_path, "wb")

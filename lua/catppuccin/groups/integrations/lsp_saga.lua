@@ -1,59 +1,5 @@
 local M = {}
 
-function M.custom_colors()
-	local C = require("catppuccin.palettes").get_palette()
-	return {
-		normal_bg = C.base, ctermbg = T.base,
-		title_bg = C.green, ctermbg = T.green,
-		red = C.red,
-		magenta = C.maroon,
-		orange = C.peach,
-		yellow = C.yellow,
-		green = C.green,
-		cyan = C.sky,
-		blue = C.blue,
-		purple = C.mauve,
-		white = C.text,
-		black = C.crust,
-	}
-end
-
-function M.custom_kind()
-	local C = require("catppuccin.palettes").get_palette()
-	return {
-		File = { " ", C.text },
-		Module = { " ", C.blue },
-		Namespace = { " ", C.peach },
-		Package = { " ", C.mauve },
-		Class = { " ", C.mauve },
-		Method = { " ", C.mauve },
-		Property = { " ", C.sky },
-		Field = { " ", C.teal },
-		Constructor = { " ", C.blue },
-		Enum = { "了", C.green },
-		Interface = { " ", C.peach },
-		Function = { " ", C.mauve },
-		Variable = { " ", C.blue },
-		Constant = { " ", C.sky },
-		String = { " ", C.green },
-		Number = { " ", C.green },
-		Boolean = { " ", C.peach },
-		Array = { " ", C.blue },
-		Object = { " ", C.peach },
-		Key = { " ", C.red },
-		Null = { " ", C.red },
-		EnumMember = { " ", C.green },
-		Struct = { " ", C.mauve },
-		Event = { " ", C.mauve },
-		Operator = { " ", C.green },
-		TypeParameter = { " ", C.green },
-		TypeAlias = { " ", C.green },
-		Parameter = { " ", C.blue },
-		StaticMethod = { "ﴂ ", C.peach },
-		Macro = { " ", C.red },
-	}
-end
-
 function M.get()
 	return {
 		TitleString = { fg = C.text, ctermfg = T.text },
@@ -62,6 +8,7 @@ function M.get()
 		SagaNormal = { bg = O.transparent_background and C.none or C.base },
 		SagaExpand = { fg = C.green, ctermfg = T.green },
 		SagaCollapse = { fg = C.green, ctermfg = T.green },
+		SagaCount = { fg = C.overlay1, ctermfg = T.overlay1 },
 		SagaBeacon = { bg = U.darken(C.surface0, 0.8, C.crust) },
 		ActionPreviewTitle = { fg = C.mauve, ctermfg = T.mauve, bg = O.transparent_background and C.none or C.base },
 		CodeActionText = { fg = C.green, ctermfg = T.green },
@@ -78,10 +25,108 @@ function M.get()
 		DiagnosticSource = { fg = C.overlay0, ctermfg = T.overlay0 },
 		DiagnosticPos = { fg = C.surface2, ctermfg = T.surface2 },
 		DiagnosticWord = { fg = C.text, ctermfg = T.text },
+		DiagnosticHead = { fg = C.blue, ctermfg = T.blue },
 		CallHierarchyIcon = { fg = C.mauve, ctermfg = T.mauve },
 		CallHierarchyTitle = { fg = C.blue, ctermfg = T.blue },
 		SagaShadow = { bg = C.crust, ctermbg = T.crust },
 		OutlineIndent = { fg = C.overlay2, ctermfg = T.overlay2 },
+
+		-- Lspkind icons support
+		LspKindClass = { fg = C.yellow, ctermfg = T.yellow },
+		LspKindConstant = { fg = C.peach, ctermfg = T.peach },
+		LspKindConstructor = { fg = C.sapphire, ctermfg = T.sapphire },
+		LspKindEnum = { fg = C.yellow, ctermfg = T.yellow },
+		LspKindEnumMember = { fg = C.teal, ctermfg = T.teal },
+		LspKindEvent = { fg = C.yellow, ctermfg = T.yellow },
+		LspKindField = { fg = C.teal, ctermfg = T.teal },
+		LspKindFile = { fg = C.rosewater, ctermfg = T.rosewater },
+		LspKindFunction = { fg = C.blue, ctermfg = T.blue },
+		LspKindInterface = { fg = C.yellow, ctermfg = T.yellow },
+		LspKindKey = { fg = C.red, ctermfg = T.red },
+		LspKindMethod = { fg = C.blue, ctermfg = T.blue },
+		LspKindModule = { fg = C.blue, ctermfg = T.blue },
+		LspKindNamespace = { fg = C.blue, ctermfg = T.blue },
+		LspKindNumber = { fg = C.peach, ctermfg = T.peach },
+		LspKindOperator = { fg = C.sky, ctermfg = T.sky },
+		LspKindPackage = { fg = C.blue, ctermfg = T.blue },
+		LspKindProperty = { fg = C.teal, ctermfg = T.teal },
+		LspKindStruct = { fg = C.yellow, ctermfg = T.yellow },
+		LspKindTypeParameter = { fg = C.maroon, ctermfg = T.maroon },
+		LspKindVariable = { fg = C.peach, ctermfg = T.peach },
+		LspKindArray = { fg = C.peach, ctermfg = T.peach },
+		LspKindBoolean = { fg = C.peach, ctermfg = T.peach },
+		LspKindNull = { fg = C.yellow, ctermfg = T.yellow },
+		LspKindObject = { fg = C.yellow, ctermfg = T.yellow },
+		LspKindString = { fg = C.green, ctermfg = T.green },
+		-- ccls-specific icons.
+		LspKindTypeAlias = { fg = C.green, ctermfg = T.green },
+		LspKindParameter = { fg = C.blue, ctermfg = T.blue },
+		LspKindStaticMethod = { fg = C.peach, ctermfg = T.peach },
+		-- Microsoft-specific icons.
+		LspKindText = { fg = C.green, ctermfg = T.green },
+		LspKindSnippet = { fg = C.mauve, ctermfg = T.mauve },
+		LspKindFolder = { fg = C.blue, ctermfg = T.blue },
+		LspKindUnit = { fg = C.green, ctermfg = T.green },
+		LspKindValue = { fg = C.peach, ctermfg = T.peach },
+	}
+end
+
+function M.custom_kind()
+	return {
+		File = { " ", "LspKindFile" },
+		Module = { " ", "LspKindModule" },
+		Namespace = { " ", "LspKindNamespace" },
+		Package = { " ", "LspKindPackage" },
+		Class = { " ", "LspKindClass" },
+		Method = { " ", "LspKindMethod" },
+		Property = { " ", "LspKindProperty" },
+		Field = { " ", "LspKindField" },
+		Constructor = { " ", "LspKindConstructor" },
+		Enum = { "了", "LspKindEnum" },
+		Interface = { " ", "LspKindInterface" },
+		Function = { " ", "LspKindFunction" },
+		Variable = { " ", "LspKindVariable" },
+		Constant = { " ", "LspKindConstant" },
+		String = { " ", "LspKindString" },
+		Number = { " ", "LspKindNumber" },
+		Boolean = { " ", "LspKindBoolean" },
+		Array = { " ", "LspKindArray" },
+		Object = { " ", "LspKindObject" },
+		Key = { " ", "LspKindKey" },
+		Null = { " ", "LspKindNull" },
+		EnumMember = { " ", "LspKindEnumMember" },
+		Struct = { " ", "LspKindStruct" },
+		Event = { " ", "LspKindEvent" },
+		Operator = { " ", "LspKindOperator" },
+		TypeParameter = { " ", "LspKindTypeParameter" },
+		TypeAlias = { " ", "LspKindTypeAlias" },
+		Parameter = { " ", "LspKindParameter" },
+		StaticMethod = { "ﴂ ", "LspKindStaticMethod" },
+		Macro = { " ", "LspKindMacro" },
+		Text = { " ", "LspKindText" },
+		Snippet = { " ", "LspKindSnippet" },
+		Folder = { " ", "LspKindFolder" },
+		Unit = { " ", "LspKindUnit" },
+		Value = { " ", "LspKindValue" },
+	}
+end
+
+-- Backwards compatibility
+function M.custom_colors()
+	local C = require("catppuccin.palettes").get_palette()
+	return {
+		normal_bg = C.base,
+		title_bg = C.green,
+		red = C.red,
+		magenta = C.maroon,
+		orange = C.peach,
+		yellow = C.yellow,
+		green = C.green,
+		cyan = C.sky,
+		blue = C.blue,
+		purple = C.mauve,
+		white = C.text,
+		black = C.crust,
 	}
 end
 
