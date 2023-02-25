@@ -20,7 +20,6 @@ function M.compile(flavour)
 		[[
 return string.dump(function()
 if vim.g.colors_name then vim.cmd("hi clear") end
-vim.o.termguicolors = true
 vim.g.colors_name = "catppuccin"]],
 	}
 	table.insert(lines, "vim.o.background = " .. (flavour == "latte" and [["light"]] or [["dark"]]))

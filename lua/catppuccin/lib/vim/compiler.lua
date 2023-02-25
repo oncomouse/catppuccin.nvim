@@ -14,7 +14,6 @@ vim.command[[
 if exists("colors_name")
 	hi clear
 endif
-set termguicolors
 let g:colors_name = "catppuccin"]],
 	}
 	table.insert(lines, "set background=" .. (flavour == "latte" and [[light]] or [[dark]]))
